@@ -1,3 +1,5 @@
+<a href="https://github.com/carlzkarthik/notes-keeper/stargazers"><img src="https://img.shields.io/github/stars/carlzkarthik/notes-keeper?style=for-the-badge"></a>&emsp;<a href="https://github.com/carlzkarthik/notes-keeper/releases"><img src="https://img.shields.io/github/v/release/carlzkarthik/notes-keeper?style=for-the-badge"></a>
+
 # Notes-Keeper
 A Flutter App to Keep Notes
 ### Author: Karthik
