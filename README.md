@@ -3,7 +3,7 @@ A Flutter App to Keep Notes
 ### Author: Karthik
 
 # Screenshots
-<img src='screenshots/screenshot1.png' height='450rem'>&emsp;<img src='screenshots/screenshot2.png' height='450rem'>&emsp;<img src='screenshots/screenshot3.png'  height='450rem'>&emsp;<img src='screenshots/gif1.gif' height='450rem'>&emsp;<img src='screenshots/gif2.gif' height='450rem'>
+<img src='screenshots/screenshot1.png' height='450rem'>&emsp;<img src='screenshots/Screenshot2.png' height='450rem'>&emsp;<img src='screenshots/screenshot3.png'  height='450rem'>&emsp;<img src='screenshots/gif1.gif' height='450rem'>&emsp;<img src='screenshots/gif2.gif' height='450rem'>
 
 # Features
 * Simple and Good User Interface
