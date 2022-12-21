@@ -13,65 +13,58 @@ class AppSettingsScreen extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: ListView(
           children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(bottom: 15),
-              child: Text(
-                'Appearence',
-                style: TextStyle(
-                  fontSize: 16,
-                  letterSpacing: 1.5,
-                  color: Colors.blue,
-                ),
-              ),
-            ),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Consumer<AppTheme>(
-                    builder: (context, notifier, child) => Expanded(
-                      child: SwitchListTile(
-                        title: Text('Dark Theme'),
-                        onChanged: (value) {
-                          notifier.toggleTheme();
-                        },
-                        value: notifier.darkTheme,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            )
+            settingCategory('Appearance'),
+            setting(settingName: 'Dark Theme'),
+            Divider(thickness: 1, color: Colors.black),
+            settingCategory('Notification'),
+            setting(settingName: 'Coming Soon', checkmarkEnabled: false)
           ],
         ),
       ),
     );
   }
 
-  showThemeSelectorDialog(BuildContext context, AppTheme appTheme) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Select Theme'),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(4.0),
+  ///Setting Category Title
+  ///
+  Widget settingCategory(String title) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 15, top: 15),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 16,
+          letterSpacing: 1.5,
+          color: Colors.blue,
+        ),
+      ),
+    );
+  }
+
+  ///Setting
+  Widget setting({
+    String settingName,
+    bool checkmarkEnabled = true,
+  }) {
+    return Container(
+      child: Row(
+        children: <Widget>[
+          Consumer<AppTheme>(
+            builder: (context, notifier, child) => Expanded(
+              child: checkmarkEnabled
+                  ? SwitchListTile(
+                      title: Text(settingName),
+                      onChanged: (value) {
+                        if (settingName == 'Dark Theme') {
+                          notifier.toggleTheme();
+                        }
+                      },
+                      value: notifier.darkTheme,
+                    )
+                  : Text(settingName),
             ),
-          ),
-          content: Column(
-            children: <Widget>[
-              FlatButton(
-                child: Text('Dark'),
-                onPressed: () {},
-              ),
-              FlatButton(
-                child: Text('Light'),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        );
-      },
+          )
+        ],
+      ),
     );
   }
 }

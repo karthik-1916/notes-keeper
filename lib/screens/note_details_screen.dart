@@ -13,6 +13,7 @@ class NoteDetailsScreen extends StatefulWidget {
   final String appBarTitle;
 
   NoteDetailsScreen({this.note, this.appBarTitle});
+
   @override
   _NoteDetailsScreenState createState() => _NoteDetailsScreenState(
         note,
@@ -297,13 +298,13 @@ class _NoteDetailsScreenState extends State<NoteDetailsScreen> {
           title: Text("Delete Note"),
           content: Text("Do you want to delete this note forever?"),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text("No"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
-            FlatButton(
+            TextButton(
               child: Text("Yes"),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -373,7 +374,7 @@ class _NoteDetailsScreenState extends State<NoteDetailsScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: RaisedButton(
+                      child: ElevatedButton(
                         child: Text('Pick Date'),
                         onPressed: () {
                           showDatePicker(
@@ -411,7 +412,7 @@ class _NoteDetailsScreenState extends State<NoteDetailsScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: RaisedButton(
+                      child: ElevatedButton(
                         child: Text('Pick Time'),
                         onPressed: () {
                           showTimePicker(
@@ -445,28 +446,26 @@ class _NoteDetailsScreenState extends State<NoteDetailsScreen> {
           ),
           actions: <Widget>[
             if (note.reminder != null)
-              FlatButton(
-                color: Colors.red,
+              TextButton(
                 child: Text('Delete'),
                 onPressed: () {
                   _deleteReminder(context);
                   Navigator.of(context).pop('delete');
                 },
               ),
-            FlatButton(
+            TextButton(
               child: Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop('cancel');
               },
             ),
-            FlatButton(
+            TextButton(
               child: Text('Save'),
               onPressed: () {
                 isReminderEdited = true;
                 isEdited = true;
                 Navigator.of(context).pop('save');
               },
-              color: Colors.blue,
             ),
           ],
           actionsPadding: EdgeInsets.all(8),

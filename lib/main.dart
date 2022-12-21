@@ -9,6 +9,7 @@ import './screens/note_details_screen.dart';
 
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
+
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
@@ -21,8 +22,8 @@ main() async {
     },
   );
   var initializationSettings = InitializationSettings(
-    initializationSettingsAndroid,
-    initializationSettingsIOS,
+    android: initializationSettingsAndroid,
+    iOS: initializationSettingsIOS,
   );
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
       onSelectNotification: (String payload) async {
@@ -46,6 +47,7 @@ main() async {
 
 class MyApp extends StatelessWidget {
   static final navigatorKey = new GlobalKey<NavigatorState>();
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(

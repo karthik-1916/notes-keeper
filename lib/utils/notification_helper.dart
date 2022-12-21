@@ -11,16 +11,16 @@ class NotificationHelper {
       'CHANNEL_ID',
       'CHANNEL_NAME',
       "CHANNEL_DESCRIPTION",
-      importance: Importance.Max,
-      priority: Priority.Max,
+      importance: Importance.max,
+      priority: Priority.max,
       playSound: true,
       timeoutAfter: 5000,
       styleInformation: DefaultStyleInformation(true, true),
     );
     var iosChannelSpecifics = IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(
-      androidChannelSpecifics,
-      iosChannelSpecifics,
+      android: androidChannelSpecifics,
+      iOS: iosChannelSpecifics,
     );
     await flutterLocalNotificationsPlugin.show(
       0,
@@ -42,13 +42,11 @@ class NotificationHelper {
   ///The [id] Should not be null and  is Unique representation of notification.
   ///
   ///
-  scheduledNotification(
-    String selectedDate,
-    String selectedTime,
-    int id,
-    String title,
-    String body,
-  ) async {
+  scheduledNotification(String selectedDate,
+      String selectedTime,
+      int id,
+      String title,
+      String body,) async {
     var scheduledNotificationDateTime = new DateTime(
         int.parse(selectedDate.substring(0, 4)),
         int.parse(selectedDate.substring(5, 7)),
@@ -65,16 +63,16 @@ class NotificationHelper {
       ledColor: const Color.fromARGB(255, 255, 0, 0),
       ledOnMs: 1000,
       ledOffMs: 500,
-      importance: Importance.Max,
-      priority: Priority.High,
+      importance: Importance.max,
+      priority: Priority.high,
       playSound: true,
       // timeoutAfter: 5000,
       styleInformation: DefaultStyleInformation(true, true),
     );
     var iosChannelSpecifics = IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(
-      androidChannelSpecifics,
-      iosChannelSpecifics,
+      android: androidChannelSpecifics,
+      iOS: iosChannelSpecifics,
     );
     await flutterLocalNotificationsPlugin.schedule(
       id,
@@ -83,6 +81,7 @@ class NotificationHelper {
       scheduledNotificationDateTime,
       platformChannelSpecifics,
       payload: id.toString(),
+      androidAllowWhileIdle: true,
     );
   }
 

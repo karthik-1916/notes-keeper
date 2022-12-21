@@ -42,7 +42,9 @@ class _NotesHomeScreenState extends State<NotesHomeScreen> {
                 child: Text('You Don\'t have any note Add One'),
               ),
             )
-          : settings.showAsGridView ? getNotesGridView() : getNotesListView(),
+          : settings.showAsGridView
+              ? getNotesGridView()
+              : getNotesListView(),
       floatingActionButton: floatingActionButton(),
     );
   }
@@ -154,19 +156,18 @@ class _NotesHomeScreenState extends State<NotesHomeScreen> {
   ///Return all the notes as Staggered Grid View.
   ///
   Widget getNotesGridView() {
-    return StaggeredGridView.countBuilder(
-      physics: BouncingScrollPhysics(),
-      crossAxisCount: 4,
+    return MasonryGridView.count(
+      crossAxisCount: 2,
+      mainAxisSpacing: 4,
+      crossAxisSpacing: 4,
+      scrollDirection: Axis.vertical,
       itemCount: notesListCount,
-      itemBuilder: (ctx, int index) => GestureDetector(
+      itemBuilder: (ctx, index) => GestureDetector(
         onTap: () {
           moveToNoteDetailsScreen(index, ctx);
         },
         child: NotesWidget(notesList[index]),
       ),
-      staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
-      mainAxisSpacing: 4.0,
-      crossAxisSpacing: 4.0,
     );
   }
 
